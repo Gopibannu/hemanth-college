@@ -1,0 +1,109 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    color: white;
+    box-sizing: border-box; /* Prevents overflow due to padding or border */
+  }
+  
+  body {
+    background: black;
+    background-image: url("bgim.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; /* Ensures the background image covers the entire screen */
+    background-position: center; /* Centers the background image */
+    background-attachment: fixed; /* Keeps the background image fixed during scrolling */
+    min-height: 100vh; /* Ensures the body takes up at least the full height of the viewport */
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    position: relative;
+    z-index: 1; /* Ensures the nav bar stays above the background */
+    background-color: transparent; /* Keep the navbar background transparent */
+  }
+  
+  .nav::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.4); /* Light white background for blur effect */
+    backdrop-filter: blur(10px); /* Apply the white blur effect */
+    z-index: -1; /* Ensure the backdrop stays behind the navbar content */
+    border-radius: 10px; /* Optional: Rounded corners */
+  }
+  
+  .nav ul {
+    display: flex;
+    margin-right: 200px;
+    gap: 100px;
+    position: relative; /* Ensures navbar items stay above the background */
+    z-index: 2; /* Ensure the navbar content stays above the blurred background */
+  }
+  
+  .nav li {
+    list-style-type: none;
+  }
+  
+  .content {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 100px;
+    gap: 100px;
+    z-index: 1; /* Ensures content stays above the background */
+  }
+  
+  .left-side,
+  .right-side {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between boxes in each column */
+  }
+  
+  .box {
+    position: relative; /* To position the backdrop filter using ::before */
+    max-width: 250px;
+    height: 200px;
+    padding: 20px;
+    border-radius: 10px; /* Optional: Rounded corners for the boxes */
+    overflow: hidden; /* Ensures the pseudo-element stays within the box's boundaries */
+    background-color: rgba(255, 255, 255, 0.4); /* Light white background for box */
+  }
+  
+  /* Apply the backdrop filter using pseudo-element */
+  .box::before {
+    content: ''; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.4); /* Light white background for the blur effect */
+    backdrop-filter: blur(10px); /* Apply the blur effect */
+    z-index: -1; /* Ensure it stays behind the content */
+    border-radius: 10px; /* Ensure the corners are rounded if needed */
+  }
+  
+  .heading, .heading1, .heading2 {
+    margin-bottom: 10px;
+    z-index: 1; /* Ensure the headings appear above the backdrop filter */
+    position: relative;
+    color: black; /* Make sure the headings are black and sharp */
+  }
+  
+  .p {
+    text-align: center;
+    margin-top: 30px;
+    color: white; /* Make sure the paragraph text is white */
+  }
+  
+  .content h1, p {
+    color: black; /* Color the text black, unaffected by the background blur */
+  }
+  
